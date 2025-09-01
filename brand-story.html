@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌故事 - CQ CHIC 精品首饰</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* 品牌故事页面特有样式 */
+        .brand-story-hero {
+            background-color: #f8f9fa;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .brand-story-hero h1 {
+            font-size: 48px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .brand-story-hero p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .story-content {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .story-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .story-text h2 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .story-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+        }
+        
+        .story-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .story-values {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .values-container h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .values-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .value-item {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .value-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: #3498db;
+        }
+        
+        .value-item h3 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .value-item p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .story-timeline {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline-container h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .timeline-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 4px solid #3498db;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -13px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .timeline-year {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .craftsmanship-showcase {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .craftsmanship-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .craftsmanship-container h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .craftsmanship-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+        }
+        
+        .craftsmanship-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .craftsmanship-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 400px;
+        }
+        
+        .craftsmanship-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .craftsmanship-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .craftsmanship-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+            padding: 30px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .craftsmanship-item:hover .craftsmanship-overlay {
+            transform: translateY(0);
+        }
+        
+        .craftsmanship-overlay h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .craftsmanship-overlay p {
+            color: #ecf0f1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .quote-section {
+            padding: 100px 0;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quote-content p {
+            font-size: 28px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .quote-author {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .story-container {
+                gap: 40px;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .craftsmanship-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quote-content p {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .brand-story-hero {
+                padding: 80px 0;
+            }
+            
+            .brand-story-hero h1 {
+                font-size: 36px;
+            }
+            
+            .story-content,
+            .story-values,
+            .story-timeline,
+            .craftsmanship-showcase {
+                padding: 60px 0;
+            }
+            
+            .story-text h2,
+            .values-container h2,
+            .timeline-container h2,
+            .craftsmanship-container h2 {
+                font-size: 28px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 20px;
+            }
+            
+            .values-grid,
+            .craftsmanship-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-section {
+                padding: 80px 0;
+            }
+            
+            .quote-content p {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .brand-story-hero {
+                padding: 60px 0;
+            }
+            
+            .brand-story-hero h1 {
+                font-size: 28px;
+            }
+            
+            .story-content,
+            .story-values,
+            .story-timeline,
+            .craftsmanship-showcase {
+                padding: 40px 0;
+            }
+            
+            .story-text h2,
+            .values-container h2,
+            .timeline-container h2,
+            .craftsmanship-container h2 {
+                font-size: 24px;
+            }
+            
+            .quote-section {
+                padding: 60px 0;
+            }
+            
+            .quote-content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">CQ CHIC</a>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="series.html" class="nav-link dropdown-toggle">手链</a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-inner">
+                                <div class="dropdown-column">
+                                    <div class="dropdown-title">手链分类</div>
+                                    <ul>
+                                        <li><a href="series.html" class="dropdown-item">水晶手链</a></li>
+                                        <li><a href="series.html" class="dropdown-item">珍珠手链</a></li>
+                                        <li><a href="series.html" class="dropdown-item">金手链</a></li>
+                                        <li><a href="series.html" class="dropdown-item">银手链</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <div class="dropdown-title">热门系列</div>
+                                    <ul>
+                                        <li><a href="series.html" class="dropdown-item">简约系列</a></li>
+                                        <li><a href="series.html" class="dropdown-item">复古系列</a></li>
+                                        <li><a href="series.html" class="dropdown-item">情侣系列</a></li>
+                                        <li><a href="series.html" class="dropdown-item">定制系列</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#about" class="nav-link dropdown-toggle">项链</a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-inner">
+                                <div class="dropdown-column">
+                                    <div class="dropdown-title">项链分类</div>
+                                    <ul>
+                                        <li><a href="#" class="dropdown-item">吊坠项链</a></li>
+                                        <li><a href="#" class="dropdown-item">锁骨链</a></li>
+                                        <li><a href="#" class="dropdown-item">珍珠项链</a></li>
+                                        <li><a href="#" class="dropdown-item">宝石项链</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <div class="dropdown-title">热门系列</div>
+                                    <ul>
+                                        <li><a href="#" class="dropdown-item">简约系列</a></li>
+                                        <li><a href="#" class="dropdown-item">复古系列</a></li>
+                                        <li><a href="#" class="dropdown-item">情侣系列</a></li>
+                                        <li><a href="#" class="dropdown-item">定制系列</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#services" class="nav-link">耳钉</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="brand-story-hero">
+        <div class="container">
+            <h1>我们的品牌故事</h1>
+            <p>每一件珠宝，都承载着匠心与情感，讲述着关于美与传承的故事</p>
+        </div>
+    </section>
+
+    <section class="story-content">
+        <div class="container">
+            <div class="story-container">
+                <div class="story-image">
+                    <img src="images/5059.jpg" alt="CQ CHIC 品牌故事">
+                </div>
+                <div class="story-text">
+                    <h2>品牌起源</h2>
+                    <p>CQ CHIC 创立于2015年，源于创始人对珠宝艺术的热爱与追求。我们相信，真正的奢华不仅仅是表面的光彩，更是对工艺的执着与对美的深刻理解。</p>
+                    <p>品牌名称中的"CQ"代表着"Craftsmanship & Quality"（工艺与品质），而"CHIC"则象征着时尚与优雅。我们致力于将传统工艺与现代设计理念相结合，为每一位顾客提供既有艺术价值又符合时代审美的珠宝作品。</p>
+                    <p>从创立之初，CQ CHIC 就坚持精选全球优质材料，每一件作品都经过严格的质量把控和精心的制作流程，确保为顾客带来卓越的佩戴体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-values">
+        <div class="container">
+            <div class="values-container">
+                <h2>我们的核心价值</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">✦</div>
+                        <h3>匠心工艺</h3>
+                        <p>我们尊重传统工艺，每一件作品都凝聚了匠人的心血与智慧，通过精湛的技艺展现珠宝的独特魅力。</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">✨</div>
+                        <h3>卓越品质</h3>
+                        <p>从选材到成品，我们坚持严格的质量标准，确保每一件珠宝都具有出色的品质和持久的价值。</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">💎</div>
+                        <h3>创新设计</h3>
+                        <p>我们不断探索新的设计理念和表现形式，将传统元素与现代美学相结合，创造出独特而富有个性的珠宝作品。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-timeline">
+        <div class="container">
+            <div class="timeline-container">
+                <h2>品牌发展历程</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2015</div>
+                            <h3>品牌创立</h3>
+                            <p>CQ CHIC 在上海创立，开设第一家实体店铺，推出首批设计系列作品。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2017</div>
+                            <h3>扩展产品线</h3>
+                            <p>推出水晶手链系列，受到市场热烈欢迎，品牌知名度迅速提升。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2019</div>
+                            <h3>线上商城上线</h3>
+                            <p>建立官方网站和电商平台，将产品销售范围扩展至全国乃至全球。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2021</div>
+                            <h3>品牌升级</h3>
+                            <p>重新设计品牌形象，推出高端定制服务，满足顾客个性化需求。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <h3>全国布局</h3>
+                            <p>在全国多个城市开设分店，品牌影响力持续扩大。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="craftsmanship-showcase">
+        <div class="container">
+            <div class="craftsmanship-container">
+                <h2>精湛工艺展示</h2>
+                <div class="craftsmanship-grid">
+                    <div class="craftsmanship-item">
+                        <img src="images/5155.jpg" alt="珠宝制作工艺">
+                        <div class="craftsmanship-overlay">
+                            <h3>选材过程</h3>
+                            <p>我们精心挑选每一颗宝石和金属材料，确保其品质和独特性。</p>
+                        </div>
+                    </div>
+                    <div class="craftsmanship-item">
+                        <img src="images/5215.jpg" alt="珠宝制作工艺">
+                        <div class="craftsmanship-overlay">
+                            <h3>设计构思</h3>
+                            <p>我们的设计师团队将灵感转化为具体的设计方案，融合传统与现代元素。</p>
+                        </div>
+                    </div>
+                    <div class="craftsmanship-item">
+                        <img src="images/5059.jpg" alt="珠宝制作工艺">
+                        <div class="craftsmanship-overlay">
+                            <h3>手工制作</h3>
+                            <p>经验丰富的匠人通过精湛的技艺，将设计方案转化为精美的珠宝作品。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-content">
+                <p>"珠宝不仅仅是装饰品，更是情感的载体和故事的讲述者。我们希望每一件CQ CHIC的作品，都能成为您生命中珍贵时刻的见证者。"</p>
+                <div class="quote-author">— CQ CHIC 创始人</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <h2>CQ CHIC</h2>
+                    </div>
+                    
+                    <div class="footer-nav">
+                        <div class="footer-column">
+                            <h3>购物</h3>
+                            <ul>
+                                <li><a href="#">新品上市</a></li>
+                                <li><a href="#">畅销单品</a></li>
+                                <li><a href="series.html">手链</a></li>
+                                <li><a href="#">定制系列</a></li>
+                                <li><a href="#">礼品卡</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h3>品牌</h3>
+                            <ul>
+                                <li><a href="brand-story.html">品牌故事</a></li>
+                                <li><a href="#">会员福利</a></li>
+                                <li><a href="#">合作计划</a></li>
+                                <li><a href="#">批发采购</a></li>
+                                <li><a href="#">博客</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h3>帮助</h3>
+                            <ul>
+                                <li><a href="#">帮助中心</a></li>
+                                <li><a href="#">订单追踪</a></li>
+                                <li><a href="#">退换货政策</a></li>
+                                <li><a href="#">实体店地址</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h3>更多信息</h3>
+                            <ul>
+                                <li><a href="#">隐私政策</a></li>
+                                <li><a href="#">使用条款</a></li>
+                                <li><a href="#">免责声明</a></li>
+                                <li><a href="#">珠宝保养</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-right">
+                    <div class="subscribe-section">
+                        <h3>订阅我们的电子邮件，享受首单9折优惠！</h3>
+                        <form class="subscribe-form">
+                            <input type="email" placeholder="电子邮箱" required>
+                            <button type="submit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
+                        
+                        <div class="footer-social">
+                            <a href="#" class="social-icon">微信</a>
+                            <a href="#" class="social-icon">微博</a>
+                            <a href="#" class="social-icon">小红书</a>
+                            <a href="#" class="social-icon">抖音</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 CQ CHIC. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
