@@ -1,0 +1,88 @@
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <h2>CQ CHIC</h2>
+        </div>
+        
+        <div class="footer-nav">
+          <div class="footer-column">
+            <h3>购物</h3>
+            <ul>
+              <li><a href="/collections/new">新品上市</a></li>
+              <li><a href="/collections/bestsellers">畅销单品</a></li>
+              <li><a href="/collections/bracelets">手链</a></li>
+              <li><a href="/collections/custom">定制系列</a></li>
+              <li><a href="/collections/gift-cards">礼品卡</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3>品牌</h3>
+            <ul>
+              <li><a href="/pages/brand-story">品牌故事</a></li>
+              <li><a href="/pages/membership">会员福利</a></li>
+              <li><a href="/pages/partnership">合作计划</a></li>
+              <li><a href="/pages/wholesale">批发采购</a></li>
+              <li><a href="/blogs">博客</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3>帮助</h3>
+            <ul>
+              <li><a href="/pages/help-center">帮助中心</a></li>
+              <li><a href="/account/track-orders">订单追踪</a></li>
+              <li><a href="/pages/returns">退换货政策</a></li>
+              <li><a href="/pages/stores">实体店地址</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3>更多信息</h3>
+            <ul>
+              <li><a href="/pages/privacy-policy">隐私政策</a></li>
+              <li><a href="/pages/terms-of-service">使用条款</a></li>
+              <li><a href="/pages/disclaimer">免责声明</a></li>
+              <li><a href="/pages/jewelry-care">珠宝保养</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-right">
+        <div class="subscribe-section">
+          <h3>订阅我们的电子邮件，享受首单9折优惠！</h3>
+          {% form 'customer' %}    
+            <input type="email" name="customer[email]" placeholder="电子邮箱" required>
+            <button type="submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          {% endform %}
+          
+          <div class="footer-social">
+            {% if settings.social_wechat %}
+              <a href="{{ settings.social_wechat }}" class="social-icon" target="_blank">微信</a>
+            {% endif %}
+            {% if settings.social_weibo %}
+              <a href="{{ settings.social_weibo }}" class="social-icon" target="_blank">微博</a>
+            {% endif %}
+            {% if settings.social_xiaohongshu %}
+              <a href="{{ settings.social_xiaohongshu }}" class="social-icon" target="_blank">小红书</a>
+            {% endif %}
+            {% if settings.social_douyin %}
+              <a href="{{ settings.social_douyin }}" class="social-icon" target="_blank">抖音</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. 保留所有权利。</p>
+    </div>
+  </div>
+</footer>

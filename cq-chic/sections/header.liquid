@@ -1,0 +1,94 @@
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">CQ CHIC</a>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="/collections/bracelets" class="nav-link dropdown-toggle">手链</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-menu-inner">
+              <div class="dropdown-column">
+                <div class="dropdown-title">手链分类</div>
+                <ul>
+                  <li><a href="/collections/bracelets/crystal" class="dropdown-item">水晶手链</a></li>
+                  <li><a href="/collections/bracelets/pearl" class="dropdown-item">珍珠手链</a></li>
+                  <li><a href="/collections/bracelets/gold" class="dropdown-item">金手链</a></li>
+                  <li><a href="/collections/bracelets/silver" class="dropdown-item">银手链</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <div class="dropdown-title">热门系列</div>
+                <ul>
+                  <li><a href="/collections/bracelets/minimalist" class="dropdown-item">简约系列</a></li>
+                  <li><a href="/collections/bracelets/vintage" class="dropdown-item">复古系列</a></li>
+                  <li><a href="/collections/bracelets/couple" class="dropdown-item">情侣系列</a></li>
+                  <li><a href="/collections/bracelets/custom" class="dropdown-item">定制系列</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="/collections/necklaces" class="nav-link dropdown-toggle">项链</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-menu-inner">
+              <div class="dropdown-column">
+                <div class="dropdown-title">项链分类</div>
+                <ul>
+                  <li><a href="/collections/necklaces/pendant" class="dropdown-item">吊坠项链</a></li>
+                  <li><a href="/collections/necklaces/collar" class="dropdown-item">锁骨链</a></li>
+                  <li><a href="/collections/necklaces/pearl" class="dropdown-item">珍珠项链</a></li>
+                  <li><a href="/collections/necklaces/gemstone" class="dropdown-item">宝石项链</a></li>
+                </ul>
+              </div>
+              <div class="dropdown-column">
+                <div class="dropdown-title">热门系列</div>
+                <ul>
+                  <li><a href="/collections/necklaces/minimalist" class="dropdown-item">简约系列</a></li>
+                  <li><a href="/collections/necklaces/vintage" class="dropdown-item">复古系列</a></li>
+                  <li><a href="/collections/necklaces/couple" class="dropdown-item">情侣系列</a></li>
+                  <li><a href="/collections/necklaces/custom" class="dropdown-item">定制系列</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/collections/earrings" class="nav-link">耳钉</a></li>
+      </ul>
+    </nav>
+    
+    <div class="header-right">
+      {%- assign search_enabled = false -%}
+      {%- if settings.predictive_search_enabled or settings.quick_search_enabled -%}
+        {%- assign search_enabled = true -%}
+      {%- endif -%}
+      
+      {%- if search_enabled -%}
+        <button type="button" class="btn search-toggle" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      {%- endif -%}
+      
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="customer-link" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      {%- endif -%}
+      
+      <a href="{{ routes.cart_url }}" class="cart-link" aria-label="Cart" data-cart-count-bubble>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count-bubble" aria-hidden="true">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,183 @@
+{% layout 'theme' %}
+
+<section id="home" class="hero">
+  <div class="container">
+    <img class="hero-image" src="{{ 'logo.png' | asset_url }}" alt="CQ CHIC Jewelry">
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="section-title">Hot product</h2>
+    <div class="category-grid">
+      <!-- 左边容器：第1和第2个元素 -->
+      <div class="category-left">
+        <div class="category-item">
+          <div class="category-image">
+            <a href="/collections/earrings"><img src="{{ '5215.jpg' | asset_url }}" alt="Earrings"></a>
+          </div>
+          <div class="category-name">EARRINGS</div>
+        </div>
+        <div class="category-item">
+          <div class="category-image">
+            <a href="/collections/bracelets"><img src="{{ '5059.jpg' | asset_url }}" alt="Bracelets"></a>
+          </div>
+          <div class="category-name">BRACELETS</div>
+        </div>
+      </div>
+      <!-- 右边容器：第3-6个元素 -->
+      <div class="category-right">
+        <div class="category-item">
+          <div class="category-image">
+            <a href="/collections/necklaces"><img src="{{ '5155.jpg' | asset_url }}" alt="Necklaces"></a>
+          </div>
+          <div class="category-name">NECKLACES</div>
+        </div>
+        <div class="category-item">
+          <div class="category-image">
+            <a href="/collections/rings"><img src="{{ '5215.jpg' | asset_url }}" alt="Rings"></a>
+          </div>
+          <div class="category-name">RINGS</div>
+        </div>
+        <div class="category-item">
+          <div class="category-image">
+            <a href="/collections/body-jewellery"><img src="{{ '5155.jpg' | asset_url }}" alt="Body Jewellery"></a>
+          </div>
+          <div class="category-name">BODY JEWELLERY</div>
+        </div>
+        <div class="category-item">
+          <div class="category-image">
+            <a href="/collections/anklet-chains"><img src="{{ '5215.jpg' | asset_url }}" alt="Anklet Chains"></a>
+          </div>
+          <div class="category-name">ANKLET CHAINS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="container">
+    <div class="services-content">
+      <div class="services-image">
+        <img src="{{ '5059.jpg' | asset_url }}" alt="Luxury Jewelry">
+      </div>
+      <div class="services-details">
+        <h2 class="section-title">Wear Your Wish. Carry Your Light.</h2>
+        <div class="services-grid">
+          <div class="service-card" data-service="service1">
+            <h4>Blossom Code</h4>
+          </div>
+          <div class="service-card" data-service="service2">
+            <h4>Health protection</h4>
+          </div>
+          <div class="service-card" data-service="service3">
+            <h4>Pathfinder Light</h4>
+          </div>
+          <div class="service-card" data-service="service4">
+            <h4>Mind Bloom</h4>
+          </div>
+          <div class="service-card" data-service="service5">
+            <h4>Family Heritag</h4>
+          </div>
+          <div class="service-card" data-service="service6">
+            <h4>Aura Spark</h4>
+          </div>
+          <div class="service-card" data-service="service7">
+            <h4>Inner Realm</h4>
+          </div>
+          <div class="service-card" data-service="service8">
+            <h4>Frequency Flux</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promotion-banner">
+  <div class="container">
+    <div class="banner-content">
+      <div class="banner-image">
+        <img src="{{ '5215.jpg' | asset_url }}" alt="Promotion Banner">
+      </div>
+      <div class="banner-overlay">
+        <p class="banner-text">购买套装和捆绑包可获得2倍积分</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    
+    <div class="testimonial-slider">
+      <div class="testimonial-slide active">
+        <div class="testimonial-content">
+          <div class="testimonial-images">
+            <img src="{{ '5059.jpg' | asset_url }}" alt="产品图片1" class="testimonial-img">
+            <div class="testimonial-text-box">
+              <p class="testimonial-quote">"The best looking set of pots and pans I have ever seen. They are easy to clean, heat up quickly, and come with great storage options. I have recommended this to several people!"</p>
+              <p class="testimonial-quote-chinese">"这是我见过的最好看的一套锅碗瓢盆。它们易于清洁，加热速度快，并具有很好的存储选择。我已经向几个人推荐了！"</p>
+              <p class="testimonial-author">Kyra T. 凯拉 | ★★★★★</p>
+            </div>
+            <img src="{{ '5155.jpg' | asset_url }}" alt="产品图片2" class="testimonial-img">
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-slide">
+        <div class="testimonial-content">
+          <div class="testimonial-images">
+            <img src="{{ '5059.jpg' | asset_url }}" alt="产品图片1" class="testimonial-img">
+            <div class="testimonial-text-box">
+              <p class="testimonial-quote">"The quality is exceptional and they look beautiful in my kitchen. I love how they distribute heat evenly when cooking."</p>
+              <p class="testimonial-quote-chinese">"质量非常好，它们在我的厨房里看起来很漂亮。我喜欢它们烹饪时均匀地分布热量。"</p>
+              <p class="testimonial-author">Michael L. 迈克尔 | ★★★★★</p>
+            </div>
+            <img src="{{ '5155.jpg' | asset_url }}" alt="产品图片2" class="testimonial-img">
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-slide">
+        <div class="testimonial-content">
+          <div class="testimonial-images">
+            <img src="{{ '5059.jpg' | asset_url }}" alt="产品图片1" class="testimonial-img">
+            <div class="testimonial-text-box">
+              <p class="testimonial-quote">"These pots and pans have completely transformed my cooking experience. They're durable, non-stick, and a joy to use every day."</p>
+              <p class="testimonial-quote-chinese">"这些锅碗瓢盆彻底改变了我的烹饪体验。它们耐用、不粘，每天使用都很愉快。"</p>
+              <p class="testimonial-author">Sarah W. 莎拉 | ★★★★★</p>
+            </div>
+            <img src="{{ '5155.jpg' | asset_url }}" alt="产品图片2" class="testimonial-img">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slider-controls">
+      <button class="slider-prev">&lt;</button>
+      <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <button class="slider-next">&gt;</button>
+    </div>
+  </div>
+</section>
+
+<!-- 品牌故事横幅 -->
+<section class="brand-banner">
+  <div class="brand-banner-inner">
+    <div class="banner-image-left">
+      <img src="{{ '5059.jpg' | asset_url }}" alt="珠宝展示">
+    </div>
+    <div class="banner-content">
+      <h2>我们的珠宝由匠人设计，为您打造</h2>
+      <p>在CQ CHIC，您会发现精心设计的手链、项链和配饰，每一件作品都融合了传统工艺与现代美学，为您的每一次旅程增添独特魅力。</p>
+      <a href="/pages/brand-story" class="btn btn-primary">了解更多 →</a>
+    </div>
+    <div class="banner-image-right">
+      <img src="{{ '5155.jpg' | asset_url }}" alt="珠宝展示">
+    </div>
+  </div>
+</section>

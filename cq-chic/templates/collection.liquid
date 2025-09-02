@@ -1,0 +1,108 @@
+{% layout 'theme' %}
+{% section 'breadcrumb' %}
+
+<section class="collection-content">
+  <div class="container">
+    <h1 class="collection-title">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="collection-description">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+    
+    <!-- 筛选和排序 -->
+    <div class="collection-filters">
+      <div class="filter-options">
+        <button class="filter-toggle">筛选</button>
+        <div class="filter-dropdown">
+          {% if collection.all_tags.size > 0 %}
+            <div class="filter-group">
+              <h4>分类</h4>
+              {% for tag in collection.all_tags %}
+                <label class="filter-checkbox">
+                  <input type="checkbox" value="{{ tag }}" {% if current_tags contains tag %}checked{% endif %}>
+                  <span>{{ tag }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <div class="filter-group">
+            <h4>价格范围</h4>
+            <div class="price-range">
+              <input type="number" placeholder="最低" min="0">
+              <span>-</span>
+              <input type="number" placeholder="最高" min="0">
+              <button class="price-filter-btn">应用</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sort-options">
+        <label for="sort">排序方式:</label>
+        <select id="sort" onchange="this.form.submit()">
+          <option value="manual" {% if collection.sort_by == 'manual' %}selected{% endif %}>手动排序</option>
+          <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>名称 A-Z</option>
+          <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>名称 Z-A</option>
+          <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>价格 低到高</option>
+          <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>价格 高到低</option>
+          <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>最新上架</option>
+          <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>最早上架</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- 产品网格 -->
+    <div class="products-grid">
+      {% if collection.products.size > 0 %}
+        {% for product in collection.products %}
+          <div class="product-card">
+            <div class="product-image">
+              <a href="{{ product.url }}"><img src="{{ product.featured_image | img_url: '400x400' }}" alt="{{ product.title }}"></a>
+              {% if product.compare_at_price > product.price %}
+                <span class="discount-badge">折扣</span>
+              {% endif %}
+              {% if product.available == false %}
+                <span class="sold-out-badge">缺货</span>
+              {% endif %}
+            </div>
+            <h3 class="product-name"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+            <div class="product-price">
+              {% if product.price_varies %}
+                {{ product.price_min | money }} - {{ product.price_max | money }}
+              {% else %}
+                {{ product.price | money }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="no-products">
+          <p>该分类暂无产品</p>
+        </div>
+      {% endif %}
+    </div>
+    
+    <!-- 分页 -->
+    {% if paginate.pages > 1 %}
+      <div class="pagination">
+        {% if paginate.previous %}
+          <a href="{{ paginate.previous.url }}" class="page-btn prev">上一页</a>
+        {% endif %}
+        
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <a href="{{ part.url }}" class="page-btn {% if part.title == paginate.current_page %}active{% endif %}">{{ part.title }}</a>
+          {% else %}
+            <span class="page-btn disabled">{{ part.title }}</span>
+          {% endif %}
+        {% endfor %}
+        
+        {% if paginate.next %}
+          <a href="{{ paginate.next.url }}" class="page-btn next">下一页</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>

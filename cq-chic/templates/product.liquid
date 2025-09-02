@@ -1,0 +1,280 @@
+{% layout 'theme' %}
+{% section 'breadcrumb' %}
+
+<section class="product-detail-section">
+  <div class="container">
+    <div class="product-detail-container">
+      <!-- 产品图片区域 -->
+      <div class="product-images">
+        <div class="main-product-image">
+          <img id="mainImage" src="{{ product.selected_or_first_available_variant.featured_image | img_url: '800x800' }}" alt="{{ product.title }}" />
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="thumbnail-images">
+            {% for image in product.images %}
+              <div class="thumbnail {% if forloop.first %}active{% endif %}" onmouseover="changeMainImage('{{ image | img_url: '800x800' }}')">
+                <img src="{{ image | img_url: '100x100' }}" alt="{{ product.title }} 图片{{ forloop.index }}" />
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      
+      <!-- 产品信息区域 -->
+      <div class="product-info-container">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <div class="product-price">
+          {%- if product.price_varies -%}
+            <span class="price">{{ product.price_min | money }}</span>
+            <span class="price-separator">-</span>
+            <span class="price">{{ product.price_max | money }}</span>
+          {%- else -%}
+            <span class="price">{{ product.price | money }}</span>
+          {%- endif -%}
+          {%- if product.compare_at_price > product.price -%}
+            <span class="compare-price">{{ product.compare_at_price | money }}</span>
+          {%- endif -%}
+        </div>
+        <div class="product-rating">
+          <div class="stars">
+            {%- assign rating = product.rating.average | round -%}
+            {%- for i in (1..5) -%}
+              {%- if i <= rating -%}★{%- else -%}☆{%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="review-count">{{ product.rating.count }} 条评价</div>
+        </div>
+        
+        <!-- 选项选择 -->
+        <div class="product-options">
+          {%- for option in product.options_with_values -%}
+            <div class="option-group">
+              <label class="option-label">{{ option.name }}</label>
+              <div class="option-values">
+                {%- for value in option.values -%}
+                  <div class="option-value {% if forloop.first %}selected{% endif %}" data-value="{{ value }}">{{ value }}</div>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+        
+        <!-- 数量选择器 -->
+        <div class="quantity-selector">
+          <label class="quantity-label">数量</label>
+          <div class="quantity-input">
+            <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+            <input type="number" class="quantity-number" id="quantity" value="1" min="1" />
+            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+          </div>
+        </div>
+        
+        <!-- 操作按钮 -->
+        <div class="action-buttons">
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="quantity" value="1" id="cart-quantity">
+            <button type="submit" class="add-to-cart-btn">加入购物车</button>
+          </form>
+          <a href="/checkout" class="buy-now-btn">立即购买</a>
+        </div>
+        <p class="product-description">
+          {{ product.description | truncatewords: 20 }}
+        </p>
+      </div>
+    </div>
+    
+    <!-- 产品特性和标签页 -->
+    <div class="product-features">
+      <div class="features-tabs">
+        <div class="feature-tab active" onclick="switchTab('benefits')">产品优势</div>
+        <div class="feature-tab" onclick="switchTab('material')">材质工艺</div>
+        <div class="feature-tab" onclick="switchTab('size')">尺寸规格</div>
+      </div>
+      
+      <!-- 产品优势内容 -->
+      <div class="feature-content active" id="benefits">
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-title">天然水晶</div>
+            <div class="benefit-description">采用天然水晶精心打磨，每颗水晶都经过严格挑选，确保纯净度和光泽度</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-title">精湛工艺</div>
+            <div class="benefit-description">由经验丰富的工匠手工制作，每一件都是独一无二的艺术品</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-title">时尚设计</div>
+            <div class="benefit-description">简约而不简单的设计风格，适合各种场合佩戴，展现个人品味</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-title">舒适佩戴</div>
+            <div class="benefit-description">精心调整的尺寸和重量，佩戴舒适，不会给手腕带来负担</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-title">送礼首选</div>
+            <div class="benefit-description">精美的包装设计，是送给亲友的理想选择</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 材质工艺内容 -->
+      <div class="feature-content" id="material">
+        <div class="material-details">
+          <h3>材质介绍</h3>
+          <p>我们的水晶手链采用天然水晶制作，每颗水晶都经过严格的挑选和打磨，确保其品质和外观。水晶是一种具有能量的宝石，被认为能够带来好运和正能量。</p>
+          <p>除了天然水晶外，我们的手链还采用了高品质的弹性线，确保手链的耐用性和舒适度。弹性线具有良好的伸缩性，适合不同手腕尺寸的人群佩戴。</p>
+          
+          <h3>制作工艺</h3>
+          <p>我们的水晶手链由经验丰富的工匠手工制作，每一个环节都经过严格的质量控制。从水晶的挑选、打磨到最后的穿制，每一步都精益求精，确保每一件产品都达到最高标准。</p>
+          <p>我们注重细节，每一颗水晶的摆放位置都经过精心设计，以确保手链的整体美观和平衡。</p>
+        </div>
+      </div>
+      
+      <!-- 尺寸规格内容 -->
+      <div class="feature-content" id="size">
+        <div class="size-details">
+          <h3>尺寸信息</h3>
+          <p>我们的水晶手链有多种尺寸可供选择，以适应不同手腕尺寸的人群：</p>
+          <ul>
+            <li>标准尺寸：适合手腕周长15-17厘米的人群</li>
+            <li>大号尺寸：适合手腕周长17-19厘米的人群</li>
+            <li>定制尺寸：可根据您的需求定制特殊尺寸</li>
+          </ul>
+          
+          <h3>如何测量手腕尺寸</h3>
+          <p>1. 使用一根软尺或绳子围绕手腕最细的部位一周</p>
+          <p>2. 确保软尺或绳子紧贴皮肤但不过紧</p>
+          <p>3. 标记出软尺或绳子的重叠位置</p>
+          <p>4. 使用尺子测量标记之间的距离，即为手腕周长</p>
+          
+          <p class="note">注意：由于水晶手链具有一定的弹性，建议选择比手腕周长大1-2厘米的尺寸，以确保佩戴舒适。</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 评论区域 -->
+    <div class="reviews-section">
+      <h2>客户评论</h2>
+      {% if product.reviews.size > 0 %}
+        <div class="reviews-summary">
+          <div class="rating-score">{{ product.rating.average | round: 1 }} <span>/ 5</span></div>
+          <div class="rating-stars">
+            {%- assign rating = product.rating.average | round -%}
+            {%- for i in (1..5) -%}
+              {%- if i <= rating -%}★{%- else -%}☆{%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="review-count">基于 {{ product.rating.count }} 条评论</div>
+        </div>
+        
+        <div class="review-filters">
+          <button class="filter-btn active" onclick="filterReviews('all')">全部评论</button>
+        </div>
+        
+        <div class="review-list">
+          {% for review in product.reviews limit:3 %}
+            <div class="review-item" data-rating="{{ review.rating }}">
+              <div class="review-header">
+                <div class="reviewer-name">{{ review.author }}</div>
+                <div class="review-date">{{ review.date | date: '%Y-%m-%d' }}</div>
+                <div class="review-rating">
+                  {%- for i in (1..5) -%}
+                    {%- if i <= review.rating -%}★{%- else -%}☆{%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+              <div class="review-content">
+                {{ review.body }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        
+        {% if product.reviews.size > 3 %}
+          <button class="load-more-btn" onclick="loadMoreReviews()">加载更多评论</button>
+        {% endif %}
+      {% else %}
+        <p class="no-reviews">暂无评论，成为第一个评论者吧！</p>
+      {% endif %}
+    </div>
+    
+    <!-- 快速答疑区域 -->
+    <div class="faq-section">
+      <h2>FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            水晶手链需要如何保养？
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>水晶手链应避免接触化学品、香水和汗水，建议在洗澡、游泳或进行运动前取下。定期用柔软的布料轻轻擦拭，保持水晶的光泽。存放时应单独放置，避免与其他首饰摩擦。</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            如何选择合适的尺寸？
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>您可以使用软尺测量手腕最细部位的周长，然后选择比手腕周长大1-2厘米的尺寸，以确保佩戴舒适。我们提供标准尺寸（适合15-17厘米手腕）和大号尺寸（适合17-19厘米手腕），也可提供定制尺寸服务。</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            是否提供退换服务？
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>我们提供7天无理由退换服务（商品需保持原包装和未使用状态）。如果您收到的商品有质量问题，请在收到商品后48小时内联系客服，并提供相关照片，我们将为您安排退换或退款。</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            水晶有什么寓意？
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>不同种类的水晶有不同的寓意和功效。一般来说，水晶被认为能够带来好运、净化能量、增强自信和促进身心健康。我们的天然水晶手链不仅是美丽的装饰品，也是传递正能量的载体。</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-support">
+        <p>还有其他问题？</p>
+        <a href="/contact" class="contact-btn">联系客服</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 相关产品 -->
+{% if collection %}  
+  <section class="related-products">
+    <div class="container">
+      <h2 class="section-title">相关产品</h2>
+      <div class="products-grid">
+        {% assign current_product = product %}
+        {% assign related_products = collection.products | where: "id", "!=" current_product.id | limit: 4 %}
+        {% for product in related_products %}
+          <div class="product-card">
+            <div class="product-image">
+              <a href="{{ product.url }}"><img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}"></a>
+            </div>
+            <h3 class="product-name"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+            <div class="product-price">{{ product.price | money }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}

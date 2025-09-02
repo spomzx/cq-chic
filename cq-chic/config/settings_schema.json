@@ -1,0 +1,443 @@
+[
+  {
+    "name": "基础设置",
+    "settings": [
+      {
+        "type": "text",
+        "id": "shop_name",
+        "label": "商店名称",
+        "default": "CQ CHIC"
+      },
+      {
+        "type": "textarea",
+        "id": "shop_description",
+        "label": "商店描述",
+        "default": "精致时尚的珠宝首饰品牌，为您带来独特的魅力体验。"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "上传您的商店Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "上传您的网站图标（建议尺寸：32x32px）"
+      },
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "主色调",
+        "default": "#d4af37"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "辅助色",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "背景色",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "文本色",
+        "default": "#333333"
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "标题字体",
+        "default": "montserrat"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "正文字体",
+        "default": "montserrat"
+      }
+    ]
+  },
+  {
+    "name": "首页设置",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_hero",
+        "label": "显示Hero区域",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "Hero标题",
+        "default": "精致珠宝，独特魅力"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_subtitle",
+        "label": "Hero副标题",
+        "default": "精选珠宝，为您的生活增添光彩。每一件作品都讲述着独特的故事。"
+      },
+      {
+        "type": "url",
+        "id": "hero_button_link",
+        "label": "Hero按钮链接",
+        "default": "/collections/all"
+      },
+      {
+        "type": "text",
+        "id": "hero_button_text",
+        "label": "Hero按钮文字",
+        "default": "立即探索"
+      },
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Hero图片",
+        "info": "建议尺寸：1200x800px"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_categories",
+        "label": "显示分类区域",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_services",
+        "label": "显示服务区域",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_promotion",
+        "label": "显示促销区域",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_testimonials",
+        "label": "显示评价区域",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_brand_story",
+        "label": "显示品牌故事",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "产品页设置",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_product_rating",
+        "label": "显示产品评分",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_share",
+        "label": "显示分享按钮",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_reviews",
+        "label": "显示产品评论",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_related_products",
+        "label": "显示相关产品",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "related_products_count",
+        "label": "相关产品数量",
+        "default": 4,
+        "min": 2,
+        "max": 8
+      }
+    ]
+  },
+  {
+    "name": "集合页设置",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_collection_description",
+        "label": "显示集合描述",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_filters",
+        "label": "显示筛选选项",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_sort",
+        "label": "显示排序选项",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "collection_view",
+        "label": "产品展示方式",
+        "options": [
+          {
+            "value": "grid",
+            "label": "网格视图"
+          },
+          {
+            "value": "list",
+            "label": "列表视图"
+          }
+        ],
+        "default": "grid"
+      },
+      {
+        "type": "number",
+        "id": "products_per_page",
+        "label": "每页显示产品数量",
+        "default": 12,
+        "min": 4,
+        "max": 24
+      },
+      {
+        "type": "select",
+        "id": "products_per_row",
+        "label": "每行显示产品数量",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ],
+        "default": "4"
+      }
+    ]
+  },
+  {
+    "name": "页脚设置",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "label": "显示订阅表单",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_placeholder",
+        "label": "订阅表单占位符",
+        "default": "请输入您的邮箱"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_button_text",
+        "label": "订阅按钮文字",
+        "default": "订阅"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social_links",
+        "label": "显示社交媒体链接",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "wechat_link",
+        "label": "微信链接"
+      },
+      {
+        "type": "url",
+        "id": "weibo_link",
+        "label": "微博链接"
+      },
+      {
+        "type": "url",
+        "id": "instagram_link",
+        "label": "Instagram链接"
+      },
+      {
+        "type": "url",
+        "id": "facebook_link",
+        "label": "Facebook链接"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_methods",
+        "label": "显示支付方式",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "copyright_text",
+        "label": "版权信息",
+        "default": "© 2023 CQ CHIC. 保留所有权利。"
+      }
+    ]
+  },
+  {
+    "name": "导航设置",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "主导航菜单",
+        "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu_1",
+        "label": "页脚菜单1",
+        "default": "footer-menu-1"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu_2",
+        "label": "页脚菜单2",
+        "default": "footer-menu-2"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu_3",
+        "label": "页脚菜单3",
+        "default": "footer-menu-3"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu_4",
+        "label": "页脚菜单4",
+        "default": "footer-menu-4"
+      }
+    ]
+  },
+  {
+    "name": "搜索设置",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_search",
+        "label": "启用搜索功能",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_search_suggestions",
+        "label": "显示搜索建议",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "search_results_limit",
+        "label": "搜索结果数量限制",
+        "default": 10,
+        "min": 5,
+        "max": 50
+      }
+    ]
+  },
+  {
+    "name": "社交媒体设置",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_wechat",
+        "label": "微信"
+      },
+      {
+        "type": "url",
+        "id": "social_weibo",
+        "label": "微博"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest",
+        "label": "Pinterest"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok"
+      }
+    ]
+  },
+  {
+    "name": "高级设置",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_analytics",
+        "label": "启用Google Analytics",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "google_analytics_id",
+        "label": "Google Analytics ID",
+        "info": "格式：UA-XXXXXXXX-X 或 G-XXXXXXXXXX"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_gtm",
+        "label": "启用Google Tag Manager",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "gtm_container_id",
+        "label": "GTM容器ID",
+        "info": "格式：GTM-XXXXXXX"
+      },
+      {
+        "type": "textarea",
+        "id": "header_custom_code",
+        "label": "自定义头部代码",
+        "info": "将在</head>标签前插入"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_custom_code",
+        "label": "自定义底部代码",
+        "info": "将在</body>标签前插入"
+      }
+    ]
+  }
+]
